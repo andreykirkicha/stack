@@ -31,5 +31,5 @@ void stack_push( struct Stack *S, stack_type value )
     assert(S->Top >=0);
     assert(S->Top <= STACK_SIZE);
 
-    S->Data[S->Size++] = value;
+    S->Data[S->Top++] = value;
 }
