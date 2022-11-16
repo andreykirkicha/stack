@@ -4,41 +4,38 @@
 
 #include "stack.hpp"
 #include "stack_functions.hpp"
+#include "errors.hpp"
 
 void stack_print( Stack S )
 {
-    assert(S.Data != NULL);
+    STACK_VERIFY(S);
 
     printf("STACK:\n|");
-    for (size_t i = 0; i < STACK_SIZE; i++)
+    for (size_t i = 0; i < S.Size; i++)
         printf(" %d |", S.Data[i]);
     printf("\n\n");
 }
 
 void stack_init( Stack *S )
 {
-    S->Data = (stack_type *)calloc(STACK_SIZE, sizeof(stack_type));
+    S->Size = STACK_SIZE;
+    S->Data = (stack_type *)calloc(S->Size, sizeof(stack_type));
     S->Top = 0;
+    S->Errors = 0;
 }
 
 void stack_push( Stack *S, stack_type value )
 {
-    assert(S != NULL);
-    assert(S->Data != NULL);
-    assert(S->Top >=0);
-    assert(S->Top <= STACK_SIZE);
+    STACK_VERIFY(*S);
 
     S->Data[S->Top++] = value;
 }
 
 stack_type stack_pop( Stack *S )
 {
-    stack_type value = 0;
+    STACK_VERIFY(*S);
 
-    assert(S != NULL);
-    assert(S->Data != NULL);
-    assert(S->Top >=0);
-    assert(S->Top <= STACK_SIZE);
+    stack_type value = 0;
 
     value = S->Data[S->Top-- - 1];
     S->Data[S->Top] = 0;
@@ -48,13 +45,13 @@ stack_type stack_pop( Stack *S )
 
 void stack_delete( Stack *S )
 {
-    assert(S != NULL);
-    assert(S->Data != NULL);
-    assert(S->Top >=0);
-    assert(S->Top <= STACK_SIZE);
+    STACK_VERIFY(*S);
 
-    while (S->Top-- != 0)
+    while (S->Top != 0)
+    {
         stack_pop(S);
+        S->Top--;
+    }
 
     free(S->Data);
 }

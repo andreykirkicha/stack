@@ -3,6 +3,7 @@
 
 #include "stack.hpp"
 #include "stack_functions.hpp"
+#include "errors.hpp"
 
 int main()
 {
