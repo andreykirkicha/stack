@@ -1,0 +1,40 @@
+stack_push() in stack_functions.cpp (line 29)
+STATUS: 	 no errors
+
+
+stack_print() in stack_functions.cpp (line 11)
+STATUS: 	 no errors
+
+
+stack_push() in stack_functions.cpp (line 29)
+STATUS: 	 no errors
+
+
+stack_print() in stack_functions.cpp (line 11)
+STATUS: 	 no errors
+
+
+stack_pop() in stack_functions.cpp (line 36)
+STATUS: 	 no errors
+
+
+stack_print() in stack_functions.cpp (line 11)
+STATUS: 	 no errors
+
+
+stack_pop() in stack_functions.cpp (line 36)
+STATUS: 	 no errors
+
+
+stack_print() in stack_functions.cpp (line 11)
+STATUS: 	 no errors
+
+
+stack_delete() in stack_functions.cpp (line 48)
+STATUS: 	 no errors
+
+
+stack_print() in stack_functions.cpp (line 11)
+STATUS: 	 no errors
+
+

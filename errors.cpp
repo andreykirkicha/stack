@@ -1,6 +1,6 @@
 #include "errors.hpp"
 
-const char *LOG_FILE_NAME = "log.txt";
+const char *LOG_FILE_NAME = "stack.log";
 const char *ERRORS_DESCR[] = {"stack address is NULL",
                             "stack data pointer is NULL",
                             "stack top has negative value",
@@ -24,10 +24,15 @@ void errors_print( Stack S, int line, const char *func, const char *file )
     FILE *log_file = NULL;
     int error_emerg = 0;
 
-    log_file = fopen(LOG_FILE_NAME, "a");
+    if (session_status == SESSION_CONTINUES)
+        log_file = fopen(LOG_FILE_NAME, "a");
+    else
+    {
+        log_file = fopen(LOG_FILE_NAME, "w");
+        session_status = SESSION_CONTINUES;
+    }
 
-    fprintf(log_file, "=========================================================================\n"
-            "%s() in %s (line %d)\n\n", func, file, line);
+    fprintf(log_file, "%s() in %s (line %d)\n", func, file, line);
 
     errors_check(&S);
 

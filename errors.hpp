@@ -15,6 +15,12 @@ enum ERRORS {
     ERR_S_TOP_HIGHER_STACK_SIZE =   1 << 3
 };
 
+enum STATUS {
+    SESSION_JUST_STARTED, SESSION_CONTINUES
+};
+
+extern int session_status;
+
 int errors_check( Stack *S );
 void errors_print( Stack S, int line, const char *func, const char *file );
 
