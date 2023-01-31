@@ -5,6 +5,8 @@
 #include "stack_functions.hpp"
 #include "errors.hpp"
 
+int session_status = SESSION_JUST_STARTED;
+
 int main()
 {
     struct Stack S;

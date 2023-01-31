@@ -1,5 +1,7 @@
 #include "errors.hpp"
 
+extern int session_status;
+
 const char *LOG_FILE_NAME = "stack.log";
 const char *ERRORS_DESCR[] = {"stack address is NULL",
                             "stack data pointer is NULL",
